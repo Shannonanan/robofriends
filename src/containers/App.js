@@ -55,10 +55,12 @@ const mapDispatchToProps = (dispatch) => {
     render(){
     //  const { robots } = this.state;
       const { searchField, onSearchChange, robots, isPending } = this.props;
-      const filtered = robots.filter(robot =>{
+      let filtered = [];
+      if(robots.length > 0){
+       filtered = robots.filter(robot =>{
         return robot.name.toLowerCase().includes(searchField.toLowerCase());
       })
-      console.log(!robots.length);
+    }
       return isPending ?
         <h1>Loading...</h1> :
        (
